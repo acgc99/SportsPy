@@ -1,15 +1,15 @@
 import tkinter as tk
+import os
 
-from running import SessionRunning, DataBaseManagerRunning, DataBaseManagerRunningPlotter, ui
+from running import SessionRunning, DataBaseManagerRunning, DataBaseManagerRunningPlotter
+from ui import UI
 
 
 def main():
     
     database = "database.db"
-    import os
     try: os.remove(database)
     except: pass
-    os.system("cls")
     
     from testdata import years, months, days, distances, times, kcals
     sessions = []
@@ -26,13 +26,11 @@ def main():
     dbmp = DataBaseManagerRunningPlotter(dbm)
     #dbmp.plotall()
     
-    root = tk.Tk()
-    ui.FrameStart(root)
-    root.mainloop()
-
+    root = UI()
 
 
 if __name__ == "__main__":
     
+    os.system("cls")
     print("Welcome to SportsPy!")
     main()
