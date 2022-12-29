@@ -1,4 +1,6 @@
-from running import SessionRunning, DataBaseManagerRunning, DataBaseManagerRunningPlotter
+import tkinter as tk
+
+from running import SessionRunning, DataBaseManagerRunning, DataBaseManagerRunningPlotter, ui
 
 
 def main():
@@ -22,7 +24,12 @@ def main():
     
     global dbmp
     dbmp = DataBaseManagerRunningPlotter(dbm)
-    dbmp.plotall()
+    #dbmp.plotall()
+    
+    root = tk.Tk()
+    ui.FrameStart(root)
+    root.mainloop()
+
 
 
 if __name__ == "__main__":
