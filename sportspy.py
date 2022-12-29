@@ -1,24 +1,3 @@
-"""
-27/12/2022 1h40min
-> Project started with the running sessions
-> SessionRunning and DataBaseManagerRunning classes
-> Basic database managing (insert, delete, update, selectone)
-> DataBaseManagerRunningException created
-28/12/2022 2h40min + 1h40min
-> Now the cursor returns SessionRunning, not raw data
-> Multiselection (dates range)
-> Method for selecting all entries in the db
-> Date can be updated now
-> DataBaseManagerRunningPlotter for plotting mean velocity and kcal density, methods: plot, plotall
-"""
-
-"""
-Objectives
-README and those files
-review code style
-user interface
-"""
-
 from running import SessionRunning, DataBaseManagerRunning, DataBaseManagerRunningPlotter
 
 
