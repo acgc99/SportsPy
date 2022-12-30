@@ -5,7 +5,7 @@ import sys
 from .sessionrunning import SessionRunning
 
 
-class DataBaseManagerRunning(sqlite3.Connection):
+class DatabaseManagerRunning(sqlite3.Connection):
     """
     Used to manage 'SessionRunning's data in a database
     """

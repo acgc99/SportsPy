@@ -4,13 +4,13 @@ import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 
 from .sessionrunning import SessionRunning
-from .databasemanagerrunning import DataBaseManagerRunning
+from .databasemanagerrunning import DatabaseManagerRunning
 
 
-class DataBaseManagerRunningPlotter:
+class DatabaseManagerRunningPlotter:
     
     
-    def __init__(self, dbm: DataBaseManagerRunning):
+    def __init__(self, dbm: DatabaseManagerRunning):
         self.dbm = dbm
         # Plotting style
         self.STYLE = "bmh"

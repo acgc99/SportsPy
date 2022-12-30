@@ -1,3 +1,3 @@
 from .sessionrunning import SessionRunning
-from .databasemanagerrunning import DataBaseManagerRunning
-from .databasemanagerrunningplotter import DataBaseManagerRunningPlotter
+from .databasemanagerrunning import DatabaseManagerRunning
+from .databasemanagerrunningplotter import DatabaseManagerRunningPlotter

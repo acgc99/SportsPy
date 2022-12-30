@@ -1,7 +1,7 @@
 import tkinter as tk
 import os
 
-from running import SessionRunning, DataBaseManagerRunning, DataBaseManagerRunningPlotter
+from running import SessionRunning, DatabaseManagerRunning, DatabaseManagerRunningPlotter
 from ui import UI
 
 
@@ -19,11 +19,11 @@ def main():
         sessions.append(sessionRunning)
     
     global dbm
-    dbm = DataBaseManagerRunning(database)
+    dbm = DatabaseManagerRunning(database)
     for session in sessions: dbm.insert(session)
     
     global dbmp
-    dbmp = DataBaseManagerRunningPlotter(dbm)
+    dbmp = DatabaseManagerRunningPlotter(dbm)
     #dbmp.plotall()
     
     root = UI()
