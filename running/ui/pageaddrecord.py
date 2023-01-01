@@ -3,26 +3,15 @@ from tkinter import ttk, messagebox
 import datetime
 
 from running import SessionRunning, DatabaseManagerRunning
+from ui import Page
 
 
-class PageAddRecord(tk.Frame):
+class PageAddRecord(Page):
     
     
-    def __init__(self, root, previousPage):
+    def __init__(self, root, previousPage, rootLabel="SportsPy > Select User > Running > Add Record"):
         # Set up
-        self.root = root
-        self.previousPage = previousPage
-        super().__init__(self.root, highlightbackground="pink",
-            highlightthickness=5, padx=50, pady=50)
-        self.labelInfoText = "SportsPy > Select User > Running > Add Record"
-        # Dependent pages
-        self.pages = {}
-        # Labels
-        self.labels = {}
-        # Buttons
-        self.buttons = {}
-        # Entries
-        self.entries = {}
+        super().__init__(root, previousPage, rootLabel, highlightbackground="pink", highlightthickness=5, padx=50, pady=50)
         # Title label
         self.labels["title"] = ttk.Label(self, text="Add Record")
         self.labels["title"].grid(row=0, column=0, columnspan=6)
@@ -44,31 +33,35 @@ class PageAddRecord(tk.Frame):
         self.entries["year"].delete(0, "end")
         self.entries["year"].grid(row=3, column=0)
         # Year button
-        self.buttons["year"] = ttk.Button(self, text="This Year",
-            command=lambda: self._f_buttonYear())
+        self.buttons["year"] = ttk.Button(self, text="This Year")
         self.buttons["year"].grid(row=4, column=0, sticky="WE")
+        self.fbuttons["year"] = lambda: self._command_year()
+        self.set_button_command("year")
         # Month entry
         self.month = tk.IntVar()
         self.entries["month"] = ttk.Entry(self, textvariable=self.month)
         self.entries["month"].delete(0, "end")
         self.entries["month"].grid(row=3, column=1)
         # Month button
-        self.buttons["month"] = ttk.Button(self, text="This Month",
-            command=lambda: self._f_buttonMonth())
+        self.buttons["month"] = ttk.Button(self, text="This Month")
         self.buttons["month"].grid(row=4, column=1, sticky="WE")
+        self.fbuttons["month"] = lambda: self._command_month()
+        self.set_button_command("month")
         # Day entry
         self.day = tk.IntVar()
         self.entries["day"] = ttk.Entry(self, textvariable=self.day)
         self.entries["day"].delete(0, "end")
         self.entries["day"].grid(row=3, column=2)
         # Day button
-        self.buttons["day"] = ttk.Button(self, text="This Day",
-            command=lambda: self._f_buttonDay())
+        self.buttons["day"] = ttk.Button(self, text="This Day")
         self.buttons["day"].grid(row=4, column=2, sticky="WE")
+        self.fbuttons["day"] = lambda: self._command_day()
+        self.set_button_command("day")
         # Today button
-        self.buttons["today"] = ttk.Button(self, text="Today",
-            command=lambda:self._f_buttonToday())
+        self.buttons["today"] = ttk.Button(self, text="Today")
         self.buttons["today"].grid(row=5, column=0, columnspan=3, sticky="WE")
+        self.fbuttons["today"] = lambda: self._command_today()
+        self.set_button_command("today")
         # Distance label
         self.labels["distance"] = ttk.Label(self, text="Distance (km)")
         self.labels["distance"].grid(row=2, column=3)
@@ -94,38 +87,41 @@ class PageAddRecord(tk.Frame):
         self.entries["kcal"].delete(0, "end")
         self.entries["kcal"].grid(row=3, column=5)
         # Save button
-        self.buttons["save"] = ttk.Button(self, text="Save",
-            command=lambda:self._f_buttonSave())
+        self.buttons["save"] = ttk.Button(self, text="Save")
         self.buttons["save"].grid(row=5, column=5, sticky="WE")
+        self.fbuttons["save"] = lambda: self._command_save()
+        self.set_button_command("save")
         # Clear button
-        self.buttons["clear"] = ttk.Button(self, text="Clear",
-            command=lambda:self._f_buttonClear())
+        self.buttons["clear"] = ttk.Button(self, text="Clear")
         self.buttons["clear"].grid(row=5, column=4, sticky="WE")
+        self.fbuttons["clear"] = self._command_clear()
+        self.set_button_command("clear")
         # Back button
-        self.buttons["back"] = ttk.Button(self, text="Back",
-            command=lambda: self._f_buttonBack())
+        self.buttons["back"] = ttk.Button(self, text="Back")
         self.buttons["back"].grid(row=6, column=5, sticky="WE")
+        self.fbuttons["back"] = lambda: self._command_back()
+        self.set_button_command("back")
     
     
-    def _f_buttonYear(self):
+    def _commnad_year(self):
         
         year, month, day = map(int, datetime.date.today().isoformat().split("-"))
         self.year.set(year)
     
     
-    def _f_buttonMonth(self):
+    def _command_month(self):
         
         year, month, day = map(int, datetime.date.today().isoformat().split("-"))
         self.month.set(month)
     
     
-    def _f_buttonDay(self):
+    def _command_day(self):
         
         year, month, day = map(int, datetime.date.today().isoformat().split("-"))
         self.day.set(day)
     
     
-    def _f_buttonToday(self):
+    def _command_today(self):
         
         year, month, day = map(int, datetime.date.today().isoformat().split("-"))
         self.year.set(year)
@@ -133,7 +129,7 @@ class PageAddRecord(tk.Frame):
         self.day.set(day)
     
     
-    def _f_buttonClear(self):
+    def _command_clear(self):
         
         self.entries["year"].delete(0, "end")
         self.entries["month"].delete(0, "end")
@@ -143,7 +139,7 @@ class PageAddRecord(tk.Frame):
         self.entries["kcal"].delete(0, "end")
     
     
-    def _f_buttonSave(self):
+    def _command_save(self):
         # Check if data is valid
         try:
             year = int(self.year.get())
@@ -203,10 +199,10 @@ class PageAddRecord(tk.Frame):
         dbm = DatabaseManagerRunning("database.db")
         dbm.insert(sessionRunning)
         dbm.disconnect()
-        self._f_buttonClear()
+        self._command_clear()
     
     
-    def _f_buttonBack(self):
+    def _command_back(self):
         
         aux = 0
         for entry in self.entries.values():
@@ -216,5 +212,5 @@ class PageAddRecord(tk.Frame):
             ok = messagebox.askyesno(message=msg, title="Warning")
         else: ok = True
         if not ok: return
-        self._f_buttonClear()
+        self._command_clear()
         self.root.change_page(self, self.previousPage)

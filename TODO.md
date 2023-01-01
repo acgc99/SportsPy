@@ -1,7 +1,7 @@
 # Todo
 - User interface
-  - Start Page
-    - Select profile page
-      - Config
-      - Running
-- In running.ui.PageAddRecord, when the button "back" is selected and there is some data in the entries, raise a message to warn that the unsaved data will be lost
+  - Create a diagram about the UI pages
+  - Add to all pages self.entries, self.labels,... make a general class
+  - how to avoid imports of the same thing: my package uses numpy for example and the main code too
+  - style · = · > ·=
+  - WE > we

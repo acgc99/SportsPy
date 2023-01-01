@@ -14,3 +14,5 @@
   - Project exported to GitHub
   - Added README.md, LICENSE.md, CHANGELOG.md, TODO.md
   - Started to work with the UI, with the capability to switch between frames
++ 30/12/2022
+  - Work on running.ui.PageAddRecord, almost finished, users profiles not implemente yet
