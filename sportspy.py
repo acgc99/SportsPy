@@ -24,7 +24,8 @@ def main():
     
     global dbmp
     dbmp = DatabaseManagerRunningPlotter(dbm)
-    #dbmp.plotall()
+    #dbmp.plotall_show()
+    
     
     root = UI()
 

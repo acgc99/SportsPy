@@ -16,3 +16,10 @@
   - Started to work with the UI, with the capability to switch between frames
 + 30/12/2022
   - Work on running.ui.PageAddRecord, almost finished, users profiles not implemente yet
++ 01/01/2023
+  - ui.Page created and applied to all pages
+  - UI flowdiagram
+  - running.ui.PagePlot works, although style issues are not addressed
++ 04/01/2023
+  - Previosly, the running.ui.PagePlot figure was destroyed and created again, now the figure is cleared and filled again, more efficiente
+  - Bug solved, for embedding matplotlib in tkinter use matplotlib.figure.Figure instead of matplotlib.pyplot.figure

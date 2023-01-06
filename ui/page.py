@@ -20,9 +20,19 @@ class Page(tk.Frame):
         self.buttons = {}
         # Buttons functions
         self.fbuttons = {}
+        # Radio buttons
+        self.radiobuttons = {}
+        # Radio buttons functions
+        self.fradiobuttons = {}
         # Entries
         self.entries = {}
+        # Separators
+        self.separators = {}
     
     
     def set_button_command(self, button):
         self.buttons[button].configure(command=self.fbuttons[button])
+    
+    
+    def set_radiobutton_command(self, button):
+        self.radiobuttons[button].configure(command=self.fradiobuttons[button])

@@ -3,6 +3,7 @@ from tkinter import ttk
 
 from ui import Page
 from .pageaddrecord import PageAddRecord
+from .pageplot import PagePlot
 
 
 class PageRunning(Page):
@@ -13,6 +14,7 @@ class PageRunning(Page):
         super().__init__(root, previousPage, rootLabel, highlightbackground="pink", highlightthickness=5, padx=50, pady=50)
         # Dependent pages
         self.pages["PageAddRecord"] = PageAddRecord(root, self)
+        self.pages["PagePlot"] = PagePlot(root, self)
         # Title label
         self.labels["title"] = ttk.Label(self, text="Running")
         self.labels["title"].grid(row=0, column=0, pady=(0,10))
@@ -27,6 +29,8 @@ class PageRunning(Page):
         # Visualize button
         self.buttons["plot"] = ttk.Button(self, text="Plot Data")
         self.buttons["plot"].grid(row=3, column=0, sticky="WE")
+        self.fbuttons["plot"] = lambda: self.root.change_page(self, self.pages["PagePlot"])
+        self.set_button_command("plot")
         # Back button
         self.buttons["back"] = ttk.Button(self, text="Back")
         self.buttons["back"].grid(row=4, column=0, sticky="WE")
