@@ -1,4 +1,4 @@
-# Todo
+# To do
 
 ## Backend
 - When retrieven data, return (idsession, SessionRunning)

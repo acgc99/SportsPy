@@ -1,4 +1,3 @@
-import tkinter as tk
 import os
 
 from running import SessionRunning, DatabaseManagerRunning, DatabaseManagerRunningPlotter
