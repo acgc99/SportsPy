@@ -2,7 +2,7 @@ import tkinter as tk
 from tkinter import ttk
 import sys
 
-from .page import Page
+from .widgets import Page
 from .pageselectuser import PageSelectUser
 
 

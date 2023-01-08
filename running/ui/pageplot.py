@@ -3,7 +3,7 @@ from tkinter import ttk
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg, NavigationToolbar2Tk
 
-from ui import Page
+from ui.widgets import Page
 from running import DatabaseManagerRunning, DatabaseManagerRunningPlotter
 
 

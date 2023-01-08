@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
 
-from .page import Page
+from .widgets import Page
 from running.ui import PageRunning
 
 

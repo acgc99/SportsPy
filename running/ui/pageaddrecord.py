@@ -3,7 +3,7 @@ from tkinter import ttk, messagebox
 import datetime
 
 from running import SessionRunning, DatabaseManagerRunning
-from ui import Page
+from ui.widgets import Page
 
 
 class PageAddRecord(Page):

@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
 
-from ui import Page
+from ui.widgets import Page
 from .pageaddrecord import PageAddRecord
 from .pageplot import PagePlot
 from .pagemanage import PageManage

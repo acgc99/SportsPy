@@ -9,7 +9,7 @@ import tkinter as tk
 from tkinter import ttk
 
 
-class FrameScrollable(tk.Frame):
+class FrameScrollableX(tk.Frame):
     
     
     def __init__(self, root, *args, **kwargs):
@@ -17,14 +17,13 @@ class FrameScrollable(tk.Frame):
         super().__init__(root, *args, **kwargs)
         
         canvas = tk.Canvas(self)
-        scrollbar = ttk.Scrollbar(self, orient="vertical", command=canvas.yview)
+        scrollbarx = ttk.Scrollbar(self, orient="horizontal", command=canvas.xview)
         
         self.frame = tk.Frame(canvas)
-        
         self.frame.bind("<Configure>", lambda x: canvas.configure(
             scrollregion=canvas.bbox("all")))
         
         canvas.create_window((0, 0), window=self.frame, anchor="nw")
-        canvas.configure(yscrollcommand=scrollbar.set)
+        canvas.configure(xscrollcommand=scrollbarx.set)
         canvas.grid(row=0, column=0, sticky="news")
-        scrollbar.grid(row=0, column=1, sticky="ns")
+        scrollbarx.grid(row=1, column=0, sticky="ew")

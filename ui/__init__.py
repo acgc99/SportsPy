@@ -1,7 +1,6 @@
 import tkinter as tk
 from tkinter import ttk
 
-from .page import Page
 from .pagestart import PageStart
 
 
