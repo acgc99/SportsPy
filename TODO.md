@@ -1,7 +1,13 @@
 # Todo
+- Scrollabe manage data
+- when retrieven data, return (idsession, SessionRunning)
 - User interface
   - Running pages
   - Profiles
+  - dev profile to store testing data
 - how to avoid imports of the same thing: my package uses numpy for example and the main code too
 - style: · = · > ·=
-- style: "WE" > "we" on tkinter widgets
+- style: "WE" > "we" on tkinter widgets (use "news" and drop letters)
+- add exit button next to the info label in every page
+- code revision
+- Page to ui.widgets

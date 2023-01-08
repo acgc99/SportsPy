@@ -19,6 +19,8 @@ class DatabaseManagerRunning(sqlite3.Connection):
             return SessionRunning(year, month, day, *row[2:])
         self.row_factory = lambda cursor, row: factory(row)
         self.c = self.cursor()
+        self.row_factory = lambda cursor, row: row[0]
+        self.cl = self.cursor() # list cursor (returns list, use when only one field is requested)
         self.row_factory = None
         # Attributes
         self.database = database
@@ -145,15 +147,37 @@ class DatabaseManagerRunning(sqlite3.Connection):
         if commit: self.commit()
     
     
-    def delete(self, year: int, month: int, day: int, commit = True):
+    def update_all(self, idsession, year, month, day, distance, time, kcal, commit = True):
         """
-        Delete a 'SessionRunning' from the database given its date
+        Update all the data of a 'SessionRunning' given its idsession
         """
         # Check if the 'SessionRunning' is registered on the database
-        date = datetime.date(year, month, day).toordinal()
-        self.check_if_in_database(date)
+        
+        
+        sessionRunning = SessionRunning(year, month, day, distance, time, kcal)
+        # Update
+        query = ("UPDATE {} SET "
+            "date = {}, "
+            "distance = {}, "
+            "time = {}, "
+            "kcal = {} "
+            "WHERE idsession = {}").format(
+            self.tablename,
+            sessionRunning.date, distance, time, kcal, idsession
+            )
+        self.c.execute(query)
+        if commit: self.commit()
+    
+    
+    def delete(self, idsession: int, commit = True):
+        """
+        Delete a 'SessionRunning' from the database given its idsession
+        """
+        # Check if the 'SessionRunning' is registered on the database
+        #date = datetime.date(year, month, day).toordinal()
+        #self.check_if_in_database(date)
         # Delete
-        query = "DELETE FROM {} WHERE date = {}".format(self.tablename, date)
+        query = "DELETE FROM {} WHERE idsession = {}".format(self.tablename, idsession)
         self.c.execute(query)
         if commit: self.commit()
     

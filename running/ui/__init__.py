@@ -1,4 +1,5 @@
 from .pagerunning import PageRunning
 from .pageaddrecord import PageAddRecord
-# database
+from .pagemanage import PageManage
+from .pageeditrecord import PageEditRecord
 from .pageplot import PagePlot

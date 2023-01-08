@@ -31,6 +31,8 @@ class UI(tk.Tk):
         """
         Change the shown page
         """
+        
         oldPage.grid_forget()
         newPage.grid(row=0, column=0)
+        newPage.on_shown()
         self.labels["label_info"].config(text=newPage.rootLabel)

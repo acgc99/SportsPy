@@ -36,3 +36,10 @@ class Page(tk.Frame):
     
     def set_radiobutton_command(self, button):
         self.radiobuttons[button].configure(command=self.fradiobuttons[button])
+    
+    
+    def on_shown(self, *args, **kwargs):
+        """
+        This will be executed when the page is gridded/packed from the UI
+        """
+        pass

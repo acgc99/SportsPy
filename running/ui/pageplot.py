@@ -15,7 +15,7 @@ class PagePlot(Page):
     https://stackoverflow.com/questions/59606641/how-do-i-configure-a-matplotlib-toolbar-so-that-the-buttons-in-the-toolbars-are
     """
     
-    def __init__(self, root, previousPage, rootLabel="SportsPy > Select User > Running > Plot Data"):
+    def __init__(self, root, previousPage, rootLabel="SportsPy > Select User > Running > Plot"):
         # Set up
         super().__init__(root, previousPage, rootLabel, highlightbackground="pink", highlightthickness=5, padx=50, pady=50)
         # Title label
@@ -45,8 +45,6 @@ class PagePlot(Page):
         self.separators["select"] = ttk.Separator(self, orient="vertical")
         self.separators["select"].grid(row=1, column=1, sticky="NS", rowspan=2, padx=(10, 10))
         
-        
-        
         # Figure
         self.dbmp = DatabaseManagerRunningPlotter(DatabaseManagerRunning("database.db"))
         self.canvas = FigureCanvasTkAgg(self.dbmp.fig, master=self)
@@ -65,6 +63,7 @@ class PagePlot(Page):
     
     def _command_plot(self):
         
+        self.dbmp.fig.clear()
         if self.what.get() == 1:
             self.dbmp.plotall()
         else:
@@ -74,7 +73,7 @@ class PagePlot(Page):
     
     def _command_back(self):
         
-        self.fig.clear()
+        self.dbmp.fig.clear()
         self.canvas.draw()
         self.what.set(0)
         self.root.change_page(self, self.previousPage)

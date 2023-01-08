@@ -94,7 +94,7 @@ class PageAddRecord(Page):
         # Clear button
         self.buttons["clear"] = ttk.Button(self, text="Clear")
         self.buttons["clear"].grid(row=5, column=4, sticky="WE")
-        self.fbuttons["clear"] = self._command_clear()
+        self.fbuttons["clear"] = lambda: self._command_clear()
         self.set_button_command("clear")
         # Back button
         self.buttons["back"] = ttk.Button(self, text="Back")
@@ -103,7 +103,7 @@ class PageAddRecord(Page):
         self.set_button_command("back")
     
     
-    def _commnad_year(self):
+    def _command_year(self):
         
         year, month, day = map(int, datetime.date.today().isoformat().split("-"))
         self.year.set(year)
@@ -130,7 +130,6 @@ class PageAddRecord(Page):
     
     
     def _command_clear(self):
-        
         self.entries["year"].delete(0, "end")
         self.entries["month"].delete(0, "end")
         self.entries["day"].delete(0, "end")

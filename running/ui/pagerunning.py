@@ -4,6 +4,7 @@ from tkinter import ttk
 from ui import Page
 from .pageaddrecord import PageAddRecord
 from .pageplot import PagePlot
+from .pagemanage import PageManage
 
 
 class PageRunning(Page):
@@ -14,6 +15,7 @@ class PageRunning(Page):
         super().__init__(root, previousPage, rootLabel, highlightbackground="pink", highlightthickness=5, padx=50, pady=50)
         # Dependent pages
         self.pages["PageAddRecord"] = PageAddRecord(root, self)
+        self.pages["PageManage"] = PageManage(root, self)
         self.pages["PagePlot"] = PagePlot(root, self)
         # Title label
         self.labels["title"] = ttk.Label(self, text="Running")
@@ -24,8 +26,10 @@ class PageRunning(Page):
         self.fbuttons["add"] = lambda: self.root.change_page(self, self.pages["PageAddRecord"])
         self.set_button_command("add")
         # Add database button
-        self.buttons["edit"] = ttk.Button(self, text="Edit Database")
-        self.buttons["edit"].grid(row=2, column=0, sticky="WE")
+        self.buttons["manage"] = ttk.Button(self, text="Manage Database")
+        self.buttons["manage"].grid(row=2, column=0, sticky="WE")
+        self.fbuttons["manage"] = lambda: self.root.change_page(self, self.pages["PageManage"])
+        self.set_button_command("manage")
         # Visualize button
         self.buttons["plot"] = ttk.Button(self, text="Plot Data")
         self.buttons["plot"].grid(row=3, column=0, sticky="WE")
