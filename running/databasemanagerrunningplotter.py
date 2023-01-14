@@ -48,19 +48,20 @@ class DatabaseManagerRunningPlotter:
         for label in ax_vel.get_xticklabels(which = "major"):
             label.set(rotation=30, horizontalalignment = "right")
         # If date limits are provided, use them
-        if kwargs == {}: data = self.dbm.selectall()
+        if kwargs == {}: data = self.dbm.select_all()
         else:
             year0, month0, day0 = kwargs["year0"], kwargs["month0"], kwargs["day0"]
             year1, month1, day1 = kwargs["year1"], kwargs["month1"], kwargs["day1"]
-            data = self.dbm.selectmulti(year0, month0, day0, year1, month1, day1)
+            data = self.dbm.select_multi_date(year0, month0, day0, year1, month1, day1)
         # Get the data and plot
         dates = collections.deque()
         vels = collections.deque()
         dens = collections.deque()
         for i in data:
-            dates.append(i.datetime_date())
-            vels.append(i.vel())
-            dens.append(i.dens())
+            sessionRunning =i[1]
+            dates.append(sessionRunning.datetime_date())
+            vels.append(sessionRunning.vel())
+            dens.append(sessionRunning.dens())
         plot_vel, = ax_vel.plot(dates, vels, self.STYLEVEL)
         plot_dens, = ax_dens.plot(dates, dens, self.STYLEDENS)
         ax_vel.yaxis.label.set_color(plot_vel.get_color())
@@ -103,17 +104,18 @@ class DatabaseManagerRunningPlotter:
         for label in ax.get_xticklabels(which = "major"):
             label.set(rotation=30, horizontalalignment = "right")
         # If date limits are provided, use them
-        if kwargs == {}: data = self.dbm.selectall()
+        if kwargs == {}: data = self.dbm.select_all()
         else:
             year0, month0, day0 = kwargs["year0"], kwargs["month0"], kwargs["day0"]
             year1, month1, day1 = kwargs["year1"], kwargs["month1"], kwargs["day1"]
-            data = self.dbm.selectmulti(year0, month0, day0, year1, month1, day1)
+            data = self.dbm.select_multi_date(year0, month0, day0, year1, month1, day1)
         # Get the data and plot
         dates = collections.deque()
         values = collections.deque()
         for i in data:
-            dates.append(i.datetime_date())
-            values.append(getattr(i, what)())
+            sessionRunning = i[1]
+            dates.append(sessionRunningdatetime_date())
+            values.append(getattr(sessionRunning, what)())
         plot, = ax.plot(dates, values, styleline)
         ax.yaxis.label.set_color(plot.get_color())
         ax.tick_params(axis="y", colors=plot.get_color())
@@ -142,19 +144,20 @@ class DatabaseManagerRunningPlotter:
         for label in ax_vel.get_xticklabels(which = "major"):
             label.set(rotation=30, horizontalalignment = "right")
         # If date limits are provided, use them
-        if kwargs == {}: data = self.dbm.selectall()
+        if kwargs == {}: data = self.dbm.select_all()
         else:
             year0, month0, day0 = kwargs["year0"], kwargs["month0"], kwargs["day0"]
             year1, month1, day1 = kwargs["year1"], kwargs["month1"], kwargs["day1"]
-            data = self.dbm.selectmulti(year0, month0, day0, year1, month1, day1)
+            data = self.dbm.select_multi_date(year0, month0, day0, year1, month1, day1)
         # Get the data and plot
         dates = collections.deque()
         vels = collections.deque()
         dens = collections.deque()
         for i in data:
-            dates.append(i.datetime_date())
-            vels.append(i.vel())
-            dens.append(i.dens())
+            sessionrunning = i[1]
+            dates.append(sessionrunning.datetime_date())
+            vels.append(sessionrunning.vel())
+            dens.append(sessionrunning.dens())
         plot_vel, = ax_vel.plot(dates, vels, self.STYLEVEL)
         plot_dens, = ax_dens.plot(dates, dens, self.STYLEDENS)
         ax_vel.yaxis.label.set_color(plot_vel.get_color())
@@ -167,6 +170,7 @@ class DatabaseManagerRunningPlotter:
     
     def plot_show(self, what, **kwargs):
         """
+        OUTDATED databasemanagerrunning cursor now returns (idsession, SessionRunning)
         Plots the given 'what' = 'vel', 'dens'
         kwargs used to specify the time interval
         year0, month0, day0, year1, month1, day1

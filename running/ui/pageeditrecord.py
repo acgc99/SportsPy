@@ -89,7 +89,7 @@ class PageEditRecord(PageAddRecord):
             self.kcal.get())
         # Save
         dbm = DatabaseManagerRunning("database.db")
-        dbm.update_all(self.idsession, self.year.get(), self.month.get(),
+        dbm.update(self.idsession, self.year.get(), self.month.get(),
             self.day.get(), self.distance.get(), self.time.get(),
             self.kcal.get())
         dbm.disconnect()

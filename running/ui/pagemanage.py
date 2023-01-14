@@ -56,10 +56,9 @@ class PageManage(Page):
             
             self.dbm = DatabaseManagerRunning("database.db")
             nrows = self.dbm.nrows()
-            self.dbm.cl.execute("SELECT idsession FROM record ORDER BY date ASC")
             self.dbm.c.execute("SELECT * FROM record ORDER BY date ASC")
             for i in range(nrows):
-                runningSession, idsession = self.dbm.c.fetchone(), self.dbm.cl.fetchone()
+                idsession, runningSession = self.dbm.c.fetchone()
                 self._initialize_dataframe(i+1, runningSession, idsession)
             self.dbm.disconnect()
     

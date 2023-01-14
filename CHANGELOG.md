@@ -30,3 +30,10 @@
   - ui.widgets created
   - ui.widgets.FrameScrollableX, ui.widgets.FrameScrollableY, ui.widgets.FrameScrollableXY
   - ui.Page moved to ui.widgets.Page
++ 14/01/2023
+  - running.DatabaseManagerRunning cursor now returns (idsession, running.SessionRunning)
+  - running.DataBaseManagerRunning.cl cursor deprecated
+  - running.DatabaseManagerRunning now has methods select_one and select_date to select by idsession or date
+  - running.DatabaseManagerRunning.update and running.DatabaseManagerRunning.update_all merged into running.DatabaseManagerRunning.update, now update is made by idsession
+  - running.DataBaseManagerRunningPlotter.plot, plot_all, plotall_show update, only this function has been updated
+  - running.ui adapted to the new changes

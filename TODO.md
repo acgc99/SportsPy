@@ -1,10 +1,11 @@
 # To do
 
 ## Backend
-- When retrieven data, return (idsession, SessionRunning)
+- DatabaseManagerRunningPlotter might become deprecated? Or just many change are needed?
 
 ## User Interface
 - Add exit button next to the info label in every page (and respective warnings)
+- Plotting: add options to choose what to plot in the left and right y-axis (vel, dens, dist, kcal, time)
 
 ## Profiles
 - Use a dev profile to store testing data

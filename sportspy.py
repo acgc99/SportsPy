@@ -17,9 +17,11 @@ def main():
             distances[i], times[i], kcals[i])
         sessions.append(sessionRunning)
     
+    
     global dbm
     dbm = DatabaseManagerRunning(database)
     for session in sessions: dbm.insert(session)
+    
     
     global dbmp
     dbmp = DatabaseManagerRunningPlotter(dbm)
