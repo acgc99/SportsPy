@@ -11,6 +11,8 @@
 
 ## General
 - Code revision
+- When introduccing data allow missing values (how to deal with missing values?)
+- If you introduce some data and go back, and then return, the previous data is still there?
 
 # Others
 - How to avoid imports of the same thing: my package uses numpy for example and the main code too

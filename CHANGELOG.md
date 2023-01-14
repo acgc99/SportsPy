@@ -23,7 +23,7 @@
 + 04/01/2023
   - Previosly, the running.ui.PagePlot figure was destroyed and created again, now the figure is cleared and filled again, more efficiente
   - Bug solved, for embedding matplotlib in tkinter use matplotlib.figure.Figure instead of matplotlib.pyplot.figure
-+ 07/01/2023
++ 06/01/2023
   - running.ui.PageManage visually finished, although unfunctional
 + 08/01/2023
   - running.ui.PageManage functionality finished

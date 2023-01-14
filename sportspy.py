@@ -31,6 +31,10 @@ def main():
 
 if __name__ == "__main__":
     
-    os.system("cls")
+    # windows
+    if os.name == "nt": os.system("cls")
+    # linux
+    elif os.name == "posix": os.system("clear")
+    
     print("Welcome to SportsPy!")
     main()
